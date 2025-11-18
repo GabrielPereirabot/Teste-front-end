@@ -1,0 +1,169 @@
+/* Estilos Gerais */
+:host {
+  display: block;
+  width: 100vw;       /* largura da viewport */
+  height: 100vh;      /* altura da viewport */
+  background-color: #f4f7fa;
+  padding: 2rem;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  box-sizing: border-box; /* inclui padding na largura/altura */
+}
+
+.dashboard-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.card {
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  padding: 1.5rem;
+  border: 1px solid #e0e0e0;
+}
+
+/* Botões Gerais */
+.btn {
+  padding: 0.75rem 1.5rem;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.btn i {
+  margin-right: 0.5rem; /* Espaçamento padrão do ícone */
+}
+
+.btn-primary {
+  background-color: #212529;
+  color: #ffffff;
+}
+.btn-primary:hover {
+  background-color: #343a40;
+}
+
+.btn-secondary {
+  background-color: #ffffff;
+  color: #212529;
+  border: 1px solid #ced4da;
+}
+.btn-secondary:hover {
+  background-color: #f8f9fa;
+}
+
+/* ============================================================
+   HEADER PADRONIZADO (Baseado no código de referência)
+   ============================================================ */
+.dashboard-header { 
+  display: flex; 
+  justify-content: space-between; 
+  align-items: center; 
+  margin-bottom: 2rem; 
+}
+
+.header-title h1 { 
+  margin: 0; 
+  font-size: 1.8rem; 
+  color: #333; /* Mantendo consistência de cor */
+}
+
+.header-title p { 
+  margin: 0; 
+  color: #666; 
+}
+
+.header-actions { 
+  display: flex; 
+  align-items: center; 
+  gap: 1rem; 
+}
+
+/* Estilo da Tag de Usuário (Pílula Roxa) */
+.user-tag { 
+  background-color: #e0cffc; 
+  color: #6f42c1; 
+  padding: 0.4rem 0.8rem; 
+  border-radius: 1rem; 
+  font-weight: 600; 
+  font-size: 0.9rem; 
+}
+
+.btn-logout {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #555;
+  font-weight: 600;
+  padding: 0.5rem; /* Ajuste leve para alinhar */
+}
+/* ============================================================ */
+
+
+/* Seção de Cartões de Ação */
+.action-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.action-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.title {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.action-card h2 {
+  font-size: 1.2rem;
+  margin: 0;
+}
+
+.action-card p {
+  color: #666;
+  margin: 0;
+  margin-bottom: 1.2rem;
+}
+
+/* Cores específicas dos ícones (Mantidas do seu código original) */
+.action-card i.rv { color: blue; }
+.action-card i.gv { color: green; }
+.action-card i.pa { color: purple; }
+
+
+/* Seção de Cartões de Estatísticas */
+.stats-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+}
+
+.stat-card {
+  text-align: left;
+}
+
+.stat-card h3 {
+  margin: 0 0 0.5rem 0;
+  color: #555;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.stat-card .stat-number {
+  margin: 0;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #333;
+}
+
+.profile-card p {
+  font-weight: 600;
+  color: #007bff;
+  cursor: pointer;
+}

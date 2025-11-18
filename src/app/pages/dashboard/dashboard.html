@@ -1,0 +1,72 @@
+<div class="dashboard-container">
+  <header class="dashboard-header">
+    <div class="header-title">
+      <h1>Sistema de Visitantes</h1>
+      <p>Bem-vindo, {{ userName }}</p>
+    </div>
+    <div class="header-actions">
+      <span class="user-tag">
+        <i class="fas fa-user-circle"></i> {{ userName }}
+      </span>
+      <button class="btn btn-logout" (click)="logout()"><i class="fas fa-sign-out-alt"></i> Sair</button>
+    </div>
+  </header>
+
+  <main class="dashboard-content">
+    <section class="action-cards">
+
+      <div class="card action-card">
+        <div class="card-body">
+          <div class="title">
+            <i class="fas fa-user-plus rv"></i>
+            <h2>Registrar Visitante</h2>
+          </div>
+          <p>Cadastrar nova visita no sistema</p>
+        </div>
+        <button class="btn btn-primary" routerLink="/registar-visitas">Nova Visita</button>
+      </div>
+
+      <div class="card action-card">
+        <div class="card-body">
+          <div class="title">
+            <i class="far fa-clock gv"></i>
+            <h2>Gerenciar Visitantes</h2>
+          </div>
+          <p>Ver e gerenciar visitantes no prédio</p>
+        </div>
+        <button class="btn btn-secondary" routerLink="/gerenciar-visitas">Ver Visitantes</button>
+      </div>
+
+      <div class="card action-card" *ngIf="isUserAdmin">
+        <div class="card-body">
+          <div class="title">
+            <i class="fas fa-tools pa"></i>
+            <h2>Painel Admin</h2>
+          </div>
+          <p>Gerenciar usuários e configurações</p>
+        </div>
+        <button class="btn btn-secondary" routerLink="/admin">Acessar</button>
+      </div>
+
+    </section>
+
+    <section class="stats-cards">
+      <div class="card stat-card">
+        <h3>Visitantes Hoje</h3>
+        <p class="stat-number">{{ visitantesHoje }}</p>
+      </div>
+      <div class="card stat-card">
+        <h3>Visitantes Ativos</h3>
+        <p class="stat-number">{{ visitantesAtivos }}</p>
+      </div>
+      <div class="card stat-card">
+        <h3>Total do Mês</h3>
+        <p class="stat-number">{{ totalDoMes }}</p>
+      </div>
+      <div class="card stat-card profile-card" *ngIf="isUserAdmin">
+        <h3>Admin</h3>
+        <p><i class="fas fa-user-cog"></i> Seu Perfil</p>
+      </div>
+    </section>
+  </main>
+</div>

@@ -1,0 +1,68 @@
+<div class="page-container">
+  <header class="page-header">
+    <div class="header-title">
+      <h1>Gerenciar Visitantes</h1>
+      <p>Controle de entrada e saída de visitantes</p>
+    </div>
+    <div class="header-actions">
+      
+      <span class="user-tag">
+        <i class="fas fa-user-circle"></i> {{ userName }}
+      </span>
+
+      <button class="btn btn-secondary" routerLink="/dashboard">
+        <i class="fas fa-arrow-left"></i> Voltar ao Dashboard
+      </button>
+      <button class="btn btn-logout" (click)="logout()">
+        <i class="fas fa-sign-out-alt"></i> Sair
+      </button>
+    </div>
+  </header>
+
+  <main class="page-content">
+    <section class="stats-cards">
+      <div class="card stat-card">
+        <h3>Visitantes Ativos</h3>
+        <p class="stat-number">{{ visitantesAtivos }}</p>
+      </div>
+      <div class="card stat-card">
+        <h3>Visitas Hoje</h3>
+        <p class="stat-number">{{ visitasHoje }}</p>
+      </div>
+      <div class="card stat-card">
+        <h3>Total do Mês</h3>
+        <p class="stat-number">{{ totalDoMes }}</p>
+      </div>
+      <div class="card stat-card">
+        <h3>Saídas Hoje</h3>
+        <p class="stat-number">{{ saidasHoje }}</p>
+      </div>
+    </section>
+
+    <section class="card">
+      <div class="search-bar">
+        <i class="fas fa-search"></i>
+        <input type="text" placeholder="Buscar por nome, documento, empresa ou pessoa visitada...">
+      </div>
+    </section>
+
+    <section class="filter-tabs">
+      <div class="tabs">
+        <button class="tab-button" [class.active]="activeTab === 'ativos'" (click)="selecionarTab('ativos')">
+          <i class="fas fa-users"></i> Visitantes Ativos ({{ visitantesAtivos }})
+        </button>
+        <button class="tab-button" [class.active]="activeTab === 'historico'" (click)="selecionarTab('historico')">
+          <i class="fas fa-history"></i> Histórico Completo
+        </button>
+      </div>
+    </section>
+
+    <section class="card visitor-list">
+      <h2>Visitantes no Prédio</h2>
+      <div *ngIf="visitantes.length === 0" class="empty-state">
+        <i class="fas fa-door-closed"></i>
+        <p>Nenhum visitante ativo no momento.</p>
+      </div>
+    </section>
+  </main>
+</div>

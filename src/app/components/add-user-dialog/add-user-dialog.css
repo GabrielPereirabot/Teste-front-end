@@ -1,0 +1,101 @@
+  .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.5);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+
+    /* Conteúdo do modal */
+    .modal {
+      background: #fff;
+      padding: 2rem;
+      border-radius: 10px;
+      width: 400px;
+      max-width: 90%;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+      font-family: Arial, sans-serif;
+    }
+
+    h2 {
+      margin: 0;
+      font-size: 1.5rem;
+      color: #333;
+    }
+
+    p{
+      margin: 0;
+      margin-top: 0.5rem;
+
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      margin-top: 1rem;
+    }
+
+    label {
+      font-weight: bold;
+      font-size: 0.9rem;
+      color: #555;
+      margin: 0;
+    }
+
+    input, select {
+      padding: 0.4rem 0.5rem;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
+    }
+
+    button {
+      padding: 0.7rem;
+      border: none;
+      border-radius: 6px;
+      background-color: #000000;
+      color: #fff;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background 0.3s;
+      width: 100%;
+
+    }
+
+    button:hover {
+      background-color: #999;
+    }
+
+    .btn-content{
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    .close-btn {
+      background-color: #ccc;
+      color: #333;
+      width: 20%;
+
+    }
+
+    .close-btn:hover {
+      background-color: #999;
+    }
+
+
+    .groups{
+      display: flex;
+      gap:0.5rem;
+    }
+    .group{
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }

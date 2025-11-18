@@ -1,0 +1,84 @@
+<div class="page-container">
+  <header class="page-header">
+    <div class="header-title">
+      <h1>Painel Administrativo</h1>
+      <p>Gerenciamento do sistema</p>
+    </div>
+    <div class="header-actions">
+      <span class="user-tag">Administrador</span>
+      <button class="btn btn-secondary" routerLink="/dashboard">
+        <i class="fas fa-arrow-left"></i> Voltar ao Dashboard
+      </button>
+      <button class="btn btn-logout" (click)="logout()"><i class="fas fa-sign-out-alt"></i> Sair</button>
+    </div>
+  </header>
+
+  <main class="page-content">
+    <section class="stats-cards">
+      <div class="card stat-card">
+        <h3>Total de Usuários</h3>
+        <p class="stat-number">{{ totalUsuarios }}</p>
+      </div>
+      <div class="card stat-card">
+        <h3>Administradores</h3>
+        <p class="stat-number">{{ totalAdmins }}</p>
+      </div>
+      <div class="card stat-card">
+        <h3>Recepcionistas</h3>
+        <p class="stat-number">{{ totalRecepcionistas }}</p>
+      </div>
+      <div class="card stat-card">
+        <h3>Usuários Ativos</h3>
+        <p class="stat-number">{{ usuariosAtivos }}</p>
+      </div>
+    </section>
+
+    <section class="card user-management">
+      <div class="management-header">
+        <div class="header-text">
+          <h2>Gerenciar Usuários</h2>
+          <p>Adicione e gerencie usuários do sistema</p>
+        </div>
+
+        <button class="btn btn-primary" (click)="openDialog()">
+          <i class="fas fa-plus"></i> Adicionar Usuário
+        </button>
+      </div>
+
+      <table class="user-table">
+        <thead>
+          <tr>
+            <th>Nome</th>
+            <th>Email</th>
+            <th>Função</th>
+            <th>CPF</th>
+            <th>Telefone</th>
+            <th>Criado em</th>
+            <th>Ações</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let user of users">
+            <td>{{ user.name }}</td>
+            <td>{{ user.email }}</td>
+            <td>
+              <span class="pill" [ngClass]="{
+      'pill-admin': user.role.toUpperCase() === 'ADMIN',
+      'pill-recepcionista': user.role.toUpperCase() === 'USER'
+    }">
+                {{ getRoleLabel(user.role) }}
+              </span>
+            </td>
+            <td>{{ user.cpf }}</td>
+            <td>{{ user.telefone }}</td>
+            <td>{{ user.created_at | date: 'dd/MM/yyyy' }}</td>
+            <td class="actions">
+              <button class="btn-icon " (click)="editUser(user)"><i class="fas fa-pencil-alt"></i></button>
+              <button class="btn-icon btn-icon-danger" (click)="deleteUser(user)"><i class="fas fa-trash"></i></button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+  </main>
+</div>

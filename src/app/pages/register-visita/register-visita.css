@@ -1,0 +1,67 @@
+/* Importando estilos gerais */
+:host { display: block; background-color: #f4f7fa; padding: 2rem; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+.page-container { max-width: 1200px; margin: 0 auto; }
+.card { background-color: #fff; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); border: 1px solid #e0e0e0; padding: 1.5rem; margin-bottom: 1.5rem; }
+.btn { padding: 0.75rem 1.5rem; border-radius: 6px; border: none; cursor: pointer; font-weight: 600; }
+.btn-primary { background-color: #212529; color: #fff; }
+.btn-secondary { background-color: #fff; color: #212529; border: 1px solid #ced4da; }
+.btn-logout { background: none; border: none; cursor: pointer; color: #555; }
+.btn i { margin-right: 0.5rem; }
+.btn-block { width: 100%; }
+
+/* Header Padronizado */
+.page-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem; }
+
+.header-title h1 { 
+  margin: 0 0 0.5rem 0; /* Espaçamento padronizado */
+  font-size: 1.8rem; 
+  color: #333; 
+}
+.header-title p { margin: 0; color: #666; }
+.header-actions { display: flex; align-items: center; gap: 1rem; }
+
+/* --- NOVA CLASSE PARA O HEADER --- */
+.user-tag { 
+  background-color: #e0cffc; 
+  color: #6f42c1; 
+  padding: 0.4rem 0.8rem; 
+  border-radius: 1rem; 
+  font-weight: 600; 
+  font-size: 0.9rem; 
+}
+/* -------------------------------- */
+
+
+/* Estilos do Cabeçalho do Card */
+.card-header { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem; padding-bottom: 1rem; border-bottom: 1px solid #f0f0f0; }
+.card-header i { font-size: 2rem; color: #0d6efd; background-color: #e7f1ff; padding: 0.8rem; border-radius: 50%; }
+.card-header h2 { margin: 0; font-size: 1.2rem; color: #333; }
+.card-header p { margin: 0; color: #777; font-size: 0.9rem; }
+
+/* Layout do Formulário */
+.form-section { max-width: 900px; margin: 0 auto; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1rem; }
+.form-group { margin-bottom: 1rem; }
+.form-group-full { grid-column: 1 / -1; }
+.form-group label { display: block; margin-bottom: 0.5rem; font-weight: 600; color: #495057; font-size: 0.9rem; }
+
+.form-control { width: 100%; padding: 0.75rem 1rem; font-size: 1rem; border: 1px solid #ced4da; border-radius: 6px; box-sizing: border-box; transition: border-color 0.3s; }
+.form-control:focus { outline: none; border-color: #0d6efd; box-shadow: 0 0 0 3px rgba(13, 110, 253, 0.1); }
+textarea.form-control { resize: vertical; }
+
+/* Upload de Arquivo */
+.custom-file-upload { position: relative; width: 100%; }
+.file-upload-label { display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 2rem; border: 2px dashed #ced4da; border-radius: 6px; background-color: #f8f9fa; cursor: pointer; transition: all 0.3s; }
+.file-upload-label:hover { background-color: #e9ecef; border-color: #adb5bd; }
+.file-upload-label i { font-size: 2rem; color: #6c757d; margin-bottom: 0.5rem; }
+.file-upload-label span { font-weight: 600; color: #495057; }
+.file-upload-label small { color: #6c757d; font-size: 0.8rem; margin-top: 0.2rem; }
+
+/* Ações */
+.form-actions { display: flex; justify-content: flex-end; gap: 1rem; margin-top: 2rem; padding-top: 1rem; border-top: 1px solid #e0e0e0; }
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .form-row { grid-template-columns: 1fr; gap: 0; }
+  .header-actions { display: none; }
+}

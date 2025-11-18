@@ -1,0 +1,119 @@
+<div class="page-container">
+  
+  <header class="page-header">
+    <div class="header-title">
+      <h1>Registro de Visitantes</h1>
+      <p>Cadastrar nova visita</p>
+    </div>
+    <div class="header-actions">
+      
+      <span class="user-tag">
+        <i class="fas fa-user-circle"></i> {{ userName }}
+      </span>
+
+      <button class="btn btn-secondary" routerLink="/dashboard">
+        <i class="fas fa-arrow-left"></i> Voltar
+      </button>
+      
+      <button class="btn btn-logout" (click)="logout()">
+        <i class="fas fa-sign-out-alt"></i> Sair
+      </button>
+    </div>
+  </header>
+
+  <main class="page-content">
+    <form (ngSubmit)="registrarVisita()">
+      
+      <div class="form-section">
+
+        <div class="card">
+          <div class="card-header">
+            <i class="fas fa-user-circle"></i>
+            <div>
+              <h2>Dados do Visitante</h2>
+              <p>Informações pessoais do visitante</p>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="nome">Nome Completo <span style="color: red;">*</span></label>
+              <input id="nome" type="text" class="form-control" [(ngModel)]="visitante.name" name="name" required placeholder="Digite o nome completo">
+            </div>
+            <div class="form-group">
+              <label for="documento">CPF/RG/Documento <span style="color: red;">*</span></label>
+              <input id="documento" type="text" class="form-control" [(ngModel)]="visitante.documento" name="documento" required placeholder="000.000.000-00">
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="empresa">Empresa/Organização</label>
+              <input id="empresa" type="text" class="form-control" [(ngModel)]="visitante.empresa" name="empresa" placeholder="Empresa do visitante">
+            </div>
+            <div class="form-group">
+              <label for="telefone">Telefone</label>
+              <input id="telefone" type="tel" class="form-control" [(ngModel)]="visitante.telefone" name="telefone" placeholder="(11) 99999-9999">
+            </div>
+          </div>
+
+          <div class="form-group form-group-full">
+            <label for="email">Email</label>
+            <input id="email" type="email" class="form-control" [(ngModel)]="visitante.email" name="email" placeholder="visitante@email.com">
+          </div>
+
+          <div class="form-group form-group-full">
+            <label>Foto do Visitante (Opcional)</label>
+            <div class="custom-file-upload">
+              <input type="file" id="foto" name="foto" (change)="onFileSelected($event)" accept="image/png, image/jpeg" hidden>
+              <label for="foto" class="file-upload-label">
+                <i class="fas fa-camera"></i>
+                <span>Adicionar Foto</span>
+                <small>JPG, PNG até 5MB</small>
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <i class="fas fa-building"></i>
+            <div>
+              <h2>Dados da Visita</h2>
+              <p>Informações sobre a visita</p>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="pessoaVisitada">Pessoa a Visitar <span style="color: red;">*</span></label>
+              <input id="pessoaVisitada" type="text" class="form-control" [(ngModel)]="visita.pessoaVisitada" name="pessoaVisitada" required placeholder="Nome da pessoa">
+            </div>
+            <div class="form-group">
+              <label for="departamento">Departamento/Setor</label>
+              <input id="departamento" type="text" class="form-control" [(ngModel)]="visita.departamento" name="departamento" placeholder="Ex: Recursos Humanos">
+            </div>
+          </div>
+
+          <div class="form-group form-group-full">
+            <label for="motivo">Motivo da Visita <span style="color: red;">*</span></label>
+            <textarea id="motivo" class="form-control" rows="3" [(ngModel)]="visita.motivo" name="motivo" required placeholder="Descreva o motivo da visita"></textarea>
+          </div>
+
+          <div class="form-group form-group-full">
+            <label for="observacoes">Observações</label>
+            <textarea id="observacoes" class="form-control" rows="3" [(ngModel)]="visita.observacoes" name="observacoes" placeholder="Observações adicionais (opcional)"></textarea>
+          </div>
+        </div>
+
+        <div class="form-actions">
+          <button type="button" class="btn btn-secondary" routerLink="/dashboard">Cancelar</button>
+          <button type="submit" class="btn btn-primary">
+            <i class="fas fa-check"></i> Registrar Visitante
+          </button>
+        </div>
+
+      </div>
+    </form>
+  </main>
+</div>

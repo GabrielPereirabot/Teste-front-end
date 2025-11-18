@@ -1,0 +1,84 @@
+/* Importando estilos gerais */
+:host {
+  height: 100vh;
+  display: block;
+  background-color: #f4f7fa;
+  padding: 2rem;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.page-container { max-width: 1200px; margin: 0 auto; }
+.card { background-color: #fff; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); border: 1px solid #e0e0e0; padding: 1.5rem; margin-bottom: 1.5rem; }
+.btn { padding: 0.75rem 1.5rem; border-radius: 6px; border: none; cursor: pointer; font-weight: 600; }
+.btn-primary { background-color: #212529; color: #fff; }
+.btn-secondary { background-color: #fff; color: #212529; border: 1px solid #ced4da; }
+.btn-logout { background: none; border: none; cursor: pointer; color: #555; }
+.btn i { margin-right: 0.5rem; }
+
+/* Header */
+.page-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem; }
+.header-title h1 { margin: 0; font-size: 1.8rem; }
+.header-title p { margin: 0; color: #666; }
+.header-actions { display: flex; align-items: center; gap: 1rem; }
+.user-tag { background-color: #e0cffc; color: #6f42c1; padding: 0.4rem 0.8rem; border-radius: 1rem; font-weight: 600; font-size: 0.9rem; }
+
+/* Stats Cards */
+.stats-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; }
+.stat-card h3 { margin: 0 0 0.5rem 0; color: #555; font-size: 1rem; font-weight: 500; }
+.stat-card .stat-number { margin: 0; font-size: 2.5rem; font-weight: 700; }
+
+/* User Management Card */
+.management-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; }
+.management-header h2 { margin: 0; }
+.management-header p { margin: 0; color: #666; }
+
+/* Tabela de Usuários */
+.user-table { width: 100%; border-collapse: collapse; }
+.user-table th, .user-table td { padding: 1rem; text-align: left; border-bottom: 1px solid #dee2e6; vertical-align: middle; }
+.user-table thead th { color: #6c757d; font-weight: 600; font-size: 0.9rem; }
+
+/* Pills de Status e Tipo */
+.pill { padding: 0.25rem 0.6rem; border-radius: 1rem; font-size: 0.8rem; font-weight: 700; }
+.pill-admin { background-color: #d1e7dd; color: #0f5132; }
+.pill-recepcionista { background-color: #cff4fc; color: #055160; }
+.pill-active { background-color: #e2e3e5; color: #41464b; }
+
+
+/* ===== CÓDIGO CORRIGIDO PARA AS AÇÕES (ABORDAGEM SIMPLIFICADA E SEGURA) ===== */
+
+/* Célula que contém os botões */
+.actions {
+  /* A propriedade 'vertical-align: middle' já está sendo aplicada pelo seletor '.user-table td' */
+  white-space: nowrap; /* Impede a quebra de linha dos botões */
+}
+
+/* Estilo do botão que contém o ícone */
+.btn-icon {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  margin: 0 0.4rem; /* Usa margem para dar espaço entre os botões */
+  vertical-align: middle; /* Alinha o botão com o texto da linha */
+}
+
+/* Estilo do ícone em si */
+.btn-icon i {
+  font-size: 1rem; /* Tamanho do ícone */
+  color: #6c757d;
+  transition: color 0.2s;
+  vertical-align: middle; /* Garante que o ícone se alinhe corretamente */
+}
+
+/* Efeito hover */
+.btn-icon:hover i {
+  color: #212529;
+}
+
+.btn-icon-danger:hover i {
+  color: #dc3545;
+}
+
+.pill {
+  text-transform: lowercase;
+}

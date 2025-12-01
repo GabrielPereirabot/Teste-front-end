@@ -2,10 +2,24 @@
 :host { display: block; background-color: #f4f7fa; padding: 2rem; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
 .page-container { max-width: 1200px; margin: 0 auto; }
 .card { background-color: #fff; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); border: 1px solid #e0e0e0; padding: 1.5rem; margin-bottom: 1.5rem; }
-.btn { padding: 0.75rem 1.5rem; border-radius: 6px; border: none; cursor: pointer; font-weight: 600; }
+
+/* Botões Gerais */
+.btn { padding: 0.75rem 1.5rem; border-radius: 6px; border: none; cursor: pointer; font-weight: 600; transition: all 0.2s; display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; }
+.btn:hover { opacity: 0.9; }
 .btn-secondary { background-color: #fff; color: #212529; border: 1px solid #ced4da; }
 .btn-logout { background: none; border: none; cursor: pointer; color: #555; }
-.btn i { margin-right: 0.5rem; }
+
+/* --- NOVAS CLASSES PARA BOTÕES (Correção Visual) --- */
+.btn-success { background-color: #0d9488; color: white; } /* Verde do seu print */
+.btn-danger { background-color: #dc3545; color: white; } /* Vermelho */
+
+/* Botão pequeno para tabelas */
+.btn-sm {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.85rem;
+    border-radius: 4px;
+}
+/* ------------------------------------------------ */
 
 /* Header Padronizado */
 .page-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem; }
@@ -13,36 +27,93 @@
 .header-title p { margin: 0; color: #666; }
 .header-actions { display: flex; align-items: center; gap: 1rem; }
 
-/* --- NOVA CLASSE PARA O HEADER --- */
 .user-tag { 
-  background-color: #e0cffc; 
-  color: #6f42c1; 
-  padding: 0.4rem 0.8rem; 
-  border-radius: 1rem; 
-  font-weight: 600; 
-  font-size: 0.9rem; 
+    background-color: #e0cffc; 
+    color: #6f42c1; 
+    padding: 0.4rem 0.8rem; 
+    border-radius: 1rem; 
+    font-weight: 600; 
+    font-size: 0.9rem; 
 }
-/* -------------------------------- */
 
-/* Stats Cards */
-.stats-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin-bottom: 1.5rem; }
+/* Stats Cards - CORREÇÃO DO GRID */
+.stats-cards { 
+    display: grid; 
+    /* Ajustado minmax para 180px para tentar caber 4 em linha em telas normais */
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); 
+    gap: 1.5rem; 
+    margin-bottom: 1.5rem; 
+}
+
+.stat-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    padding: 1.5rem; 
+    border-top: 4px solid transparent; /* Detalhe visual opcional */
+}
+
+/* Cores opcionais para a borda superior dos cards */
+.stat-card.color-indigo { border-top-color: #6366f1; }
+.stat-card.color-green { border-top-color: #10b981; }
+.stat-card.color-yellow { border-top-color: #f59e0b; }
+.stat-card.color-red { border-top-color: #ef4444; }
+
 .stat-card h3 { margin: 0 0 0.5rem 0; color: #555; font-size: 1rem; font-weight: 500; }
 .stat-card .stat-number { margin: 0; font-size: 2.5rem; font-weight: 700; color: #333; }
 
-/* Barra de Busca */
-.search-bar { position: relative; }
-.search-bar input { width: 100%; padding: 0.8rem 1rem 0.8rem 2.5rem; border: 1px solid #ced4da; border-radius: 6px; font-size: 1rem; box-sizing: border-box; }
-.search-bar i { position: absolute; left: 0.8rem; top: 50%; transform: translateY(-50%); color: #6c757d; }
+
+/* Barra de Busca - CORREÇÃO DE ALINHAMENTO */
+.search-section { padding: 1rem 1.5rem; }
+.search-bar { position: relative; width: 100%; }
+.search-bar input { 
+    width: 100%; 
+    padding: 0.8rem 1rem 0.8rem 2.8rem; /* Mais espaço para o ícone */
+    border: 1px solid #ced4da; 
+    border-radius: 6px; 
+    font-size: 1rem; 
+    box-sizing: border-box; /* Essencial para não quebrar o layout */
+}
+.search-bar i { 
+    position: absolute; 
+    left: 1rem; 
+    top: 50%; 
+    transform: translateY(-50%); 
+    color: #6c757d; 
+    pointer-events: none; /* O clique passa pelo ícone e vai pro input */
+}
 
 /* Abas */
 .filter-tabs { margin-bottom: 1.5rem; }
 .tabs { display: inline-flex; background-color: #e9ecef; border-radius: 6px; padding: 4px; }
-.tab-button { padding: 0.6rem 1.2rem; border: none; background-color: transparent; cursor: pointer; border-radius: 4px; font-weight: 600; color: #495057; transition: background-color 0.3s, color 0.3s; }
+.tab-button { padding: 0.6rem 1.2rem; border: none; background-color: transparent; cursor: pointer; border-radius: 4px; font-weight: 600; color: #495057; transition: all 0.2s; display: flex; align-items: center; gap: 0.5rem; }
 .tab-button.active { background-color: #ffffff; color: #0d6efd; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
-.tab-button i { margin-right: 0.5rem; }
 
-/* Lista e Empty State */
-.visitor-list h2 { margin-top: 0; margin-bottom: 1.5rem; }
-.empty-state { text-align: center; padding: 3rem; border: 2px dashed #e0e0e0; border-radius: 8px; color: #6c757d; }
-.empty-state i { font-size: 3rem; }
-.empty-state p { margin-top: 1rem; font-size: 1.2rem; }
+/* Tabela e Lista */
+.list-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #eee;
+}
+.list-header h2 { margin: 0; font-size: 1.2rem; }
+
+.empty-state { text-align: center; padding: 3rem; color: #6c757d; }
+.empty-state i { font-size: 3rem; margin-bottom: 1rem; opacity: 0.5; }
+.empty-state p { margin: 0.2rem 0; }
+
+/* Tabela */
+.table-responsive { overflow-x: auto; }
+.visitor-list table { width: 100%; border-collapse: collapse; }
+.visitor-list th, .visitor-list td { padding: 1rem; text-align: left; border-bottom: 1px solid #e9ecef; vertical-align: middle; }
+.visitor-list th { background-color: #f8f9fa; font-weight: 600; color: #495057; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.5px; }
+.visitor-list tr:hover { background-color: #f8f9fa; }
+
+/* Status Badges */
+.status-badge { font-weight: 600; font-size: 0.9rem; }
+.status-active { color: #10b981; }
+.status-closed { color: #ef4444; }

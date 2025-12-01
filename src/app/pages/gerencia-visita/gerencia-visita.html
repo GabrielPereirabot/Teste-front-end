@@ -2,17 +2,17 @@
   <header class="page-header">
     <div class="header-title">
       <h1>Gerenciar Visitantes</h1>
-      <p>Controle de entrada e saída de visitantes</p>
+      <p>Controle de entrada e saída</p>
     </div>
     <div class="header-actions">
-      
       <span class="user-tag">
         <i class="fas fa-user-circle"></i> {{ userName }}
       </span>
-
+      
       <button class="btn btn-secondary" routerLink="/dashboard">
         <i class="fas fa-arrow-left"></i> Voltar ao Dashboard
       </button>
+
       <button class="btn btn-logout" (click)="logout()">
         <i class="fas fa-sign-out-alt"></i> Sair
       </button>
@@ -21,48 +21,119 @@
 
   <main class="page-content">
     <section class="stats-cards">
-      <div class="card stat-card">
-        <h3>Visitantes Ativos</h3>
-        <p class="stat-number">{{ visitantesAtivos }}</p>
+      <div class="card stat-card color-indigo">
+        <h3>Ativos</h3>
+        <p class="stat-number">{{ visitasAtivas.length }}</p>
       </div>
-      <div class="card stat-card">
-        <h3>Visitas Hoje</h3>
+      <div class="card stat-card color-green">
+        <h3>Registros Hoje</h3>
         <p class="stat-number">{{ visitasHoje }}</p>
       </div>
-      <div class="card stat-card">
-        <h3>Total do Mês</h3>
+      <div class="card stat-card color-yellow">
+        <h3>Total Mês</h3>
         <p class="stat-number">{{ totalDoMes }}</p>
       </div>
-      <div class="card stat-card">
+      <div class="card stat-card color-red">
         <h3>Saídas Hoje</h3>
         <p class="stat-number">{{ saidasHoje }}</p>
       </div>
     </section>
 
-    <section class="card">
+    <section class="card search-section">
       <div class="search-bar">
         <i class="fas fa-search"></i>
-        <input type="text" placeholder="Buscar por nome, documento, empresa ou pessoa visitada...">
+        <input type="text" placeholder="Buscar por nome, documento ou pessoa visitada...">
       </div>
     </section>
 
     <section class="filter-tabs">
       <div class="tabs">
         <button class="tab-button" [class.active]="activeTab === 'ativos'" (click)="selecionarTab('ativos')">
-          <i class="fas fa-users"></i> Visitantes Ativos ({{ visitantesAtivos }})
+          <i class="fas fa-users"></i> Ativos ({{ visitasAtivas.length }})
         </button>
         <button class="tab-button" [class.active]="activeTab === 'historico'" (click)="selecionarTab('historico')">
-          <i class="fas fa-history"></i> Histórico Completo
+          <i class="fas fa-history"></i> Histórico
         </button>
       </div>
     </section>
 
     <section class="card visitor-list">
-      <h2>Visitantes no Prédio</h2>
-      <div *ngIf="visitantes.length === 0" class="empty-state">
-        <i class="fas fa-door-closed"></i>
-        <p>Nenhum visitante ativo no momento.</p>
+      <div class="list-header">
+        <h2>Visitas</h2>
       </div>
+
+      <div *ngIf="activeTab === 'ativos'">
+        <div *ngIf="visitasAtivas.length === 0" class="empty-state">
+          <i class="fas fa-door-closed"></i>
+          <p>Nenhum visitante ativo no momento.</p>
+          <p class="text-secondary">Novos registros aparecem aqui.</p>
+        </div>
+
+        <div *ngIf="visitasAtivas.length > 0" class="table-responsive">
+          <table>
+            <thead>
+              <tr>
+                <th>Nome</th>
+                <th>Documento</th>
+                <th>Visitando</th>
+                <th>Entrada</th>
+                <th style="width: 100px; text-align: center;">Ações</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let visita of visitasAtivas">
+                <td>{{ visita.nomeCompleto }}</td>
+                <td>{{ visita.documentoIdentidade }}</td>
+                <td>{{ visita.pessoaVisitada }}</td>
+                <td>{{ visita.horaEntrada | date: 'HH:mm' }}</td>
+                <td style="text-align: center;">
+                  <button class="btn btn-danger btn-sm" (click)="finalizarVisita(visita.id)">
+                    <i class="fas fa-sign-out-alt"></i> Sair
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div *ngIf="activeTab === 'historico'">
+        <div *ngIf="visitasHistorico.length === 0" class="empty-state">
+          <i class="fas fa-archive"></i>
+          <p>Histórico vazio.</p>
+        </div>
+
+        <div *ngIf="visitasHistorico.length > 0" class="table-responsive">
+          <table>
+            <thead>
+              <tr>
+                <th>Status</th>
+                <th>Nome</th>
+                <th>Documento</th>
+                <th>Entrada</th>
+                <th>Saída</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let visita of visitasHistorico">
+                <td>
+                    <span class="status-badge" [class.status-active]="visita.status === 'Ativo'" [class.status-closed]="visita.status !== 'Ativo'">
+                        {{ visita.status }}
+                    </span>
+                </td>
+                <td>{{ visita.nomeCompleto }}</td>
+                <td>{{ visita.documentoIdentidade }}</td>
+                <td>{{ visita.horaEntrada | date: 'dd/MM HH:mm' }}</td>
+                <td>
+                    <span *ngIf="visita.horaSaida">{{ visita.horaSaida | date: 'HH:mm' }}</span>
+                    <span *ngIf="!visita.horaSaida">-</span>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
     </section>
   </main>
 </div>
